@@ -76,7 +76,18 @@ func Helm() {
 		if err := json.Unmarshal(test, &versions); err != nil {
 			log.Fatalf("Error parsing JSON: %v\n", err)
 		}
-		fmt.Printf("Version is %v\n", versions[0])
+		for i, version := range versions {
+			fmt.Printf("Index is %v, version is %v\n", i, version)
+
+			x := fmt.Sprintf("%s-%s", release.Name, version.Version)
+			if x == release.Chart {
+				fmt.Println("We're good")
+			} else {
+				fmt.Printf("Need to upgrade chef")
+			}
+			break
+
+		}
 
 	}
 	helmrepo()
@@ -99,6 +110,7 @@ func helmrepo() {
 	}
 
 }
+
 func Version(version string) {
 	fmt.Printf("Hello from cmd! Version is : %v\n", version)
 }
