@@ -1,4 +1,4 @@
-package cmd
+package pkg
 
 import (
 	"encoding/json"
@@ -45,6 +45,7 @@ func init() {
 	// Get the current context
 	context := config.CurrentContext
 	fmt.Printf("Current context: %s\n", context)
+
 }
 
 func Helm() {
